@@ -1,29 +1,52 @@
-// Example helper: calculate total price from a list of items
-export function calculateTotal(items) {
-  if (!Array.isArray(items)) return 0;
-
-  return items.reduce((total, item) => {
-    const price = item.price || 0;
-    const quantity = item.quantity || 1;
-    return total + price * quantity;
-  }, 0);
-}
-
 export function calculatePersonalStylesScore(scores) {
     const groupStyles = { "D":0 , "I":0 , "S":0 , "A":0 }
+    const keyToGroup = {
+        1: "D",
+        2: "I",
+        3: "I",
+        4: "S",
+        5: "I",
+        6: "S",
+        7: "D",
+        8: "D",
+        9: "I",
+        10: "I",
+        11: "D",
+        12: "A",
+        13: "A",
+        14: "S",
+        15: "D",
+        16: "A",
+        17: "I",
+        18: "D",
+        19: "S",
+        20: "A",
+        21: "A",
+        22: "S",
+        23: "A",
+        24: "S",
+    }
+
     console.log(scores)
-   
-    Object.entries(scores).forEach(([key, value]) => {
-        if (key === "1") {
-            groupStyles.D += value
-        } else if (key === "2") {
-            groupStyles.I += value
-        } else if (key === "3") {
-            groupStyles.S += value
-        } else if (key === "4") {
-            groupStyles.A += value
-        }
+  
+    Object.entries(keyToGroup).forEach(([key, value]) => {
+        groupStyles[value] += scores[key]
+        // console.log("key :", key, "adding values: ", value, groupStyles)
     })
-    
-    return groupStyles
+
+    const sortedByValue = Object.entries(groupStyles)
+    .sort((a, b) => b[1] - a[1])
+    .reduce((obj, [key,value]) => {
+        obj[key] = value
+        return obj
+    },{});
+
+    return sortedByValue
+}
+
+export const typeMap = {
+  I: "Influencer",
+  A: "Analyzer",
+  S: "Sympathizer",
+  D: "Driver",
 }

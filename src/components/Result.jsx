@@ -3,6 +3,8 @@ import { typeMap } from "../utils/stateHelper"
 import { useState } from "react"
 import PivotGraph from "./PivotGraph"
 import GradientButtons from "./GradientButton"
+import CardsliderIdentify from "./CardsliderIdentify"
+import CardsliderRelating from "./CardsliderRelating"
 
 function Result({ result }) {
   const [cardSlider, setCardSlider] = useState("1")
@@ -17,7 +19,8 @@ function Result({ result }) {
         <div className="w-full max-w-6xl flex flex-wrap gap-6 justify-start mb-1 pt-5">
           <GradientButtons label="Graph" onClick={() => setCardSlider("0")} />
           <GradientButtons label="Characteristic" onClick={() => setCardSlider("1")} />
-          <GradientButtons label="Prev" onClick={() => setCardSlider("2")} />
+          <GradientButtons label="Identify" onClick={() => setCardSlider("2")} />
+          <GradientButtons label="Relating" onClick={() => setCardSlider("3")} />
         </div>
 
         <div className="relative w-full max-w-6xl min-h-[80vh] mt-4">
@@ -49,7 +52,17 @@ function Result({ result }) {
               : "opacity-0 translate-y-10 pointer-events-none"
               }`}
           >
-            <CardSliderCharacteristic key="2" />
+            <CardsliderIdentify key="2" />
+          </div>
+
+          {/* Card 3 */}
+          <div
+            className={`absolute inset-0 transition-all duration-500 ease-in-out transform ${cardSlider === "3"
+              ? "opacity-100 translate-y-0"
+              : "opacity-0 translate-y-10 pointer-events-none"
+              }`}
+          >
+            <CardsliderRelating key="3" />
           </div>
         </div>
 

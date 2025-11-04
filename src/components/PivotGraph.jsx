@@ -12,6 +12,12 @@ import {
 export default function PivotGraph({ groupStyles }) {
     // Convert your object to array format Recharts needs
     const groupStylesUnsorted = { "D": groupStyles["D"], "I": groupStyles["I"], "S": groupStyles["S"], "A": groupStyles["A"] }
+    const typeMap = {
+        D: "Driver",
+        I: "Influencer",
+        S: "Symphatizer",
+        A: "Analyzer"
+    }
 
     const data = Object.entries(groupStylesUnsorted).map(([key, value]) => ({
         type: key,
@@ -26,7 +32,7 @@ export default function PivotGraph({ groupStyles }) {
 
             <div className="h-[300px] px-4">
                 <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={data} margin={{bottom: 20, right: 20 }}>
+                    <LineChart data={data} margin={{ bottom: 20, right: 20 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                         <XAxis dataKey="type" stroke="#6b7280">
                             <Label
@@ -36,8 +42,27 @@ export default function PivotGraph({ groupStyles }) {
                                 className="text-gray-700 text-sm"
                             />
                         </XAxis>
-                        <YAxis stroke="#6b7280" domain={[0, "auto"]} />
-                        <Tooltip />
+                        <YAxis stroke="#6b7280" domain={[0, "auto"]}>
+                            <Label
+                                value="Score"
+                                angle={-90}
+                                position="insideLeft"
+                                style={{ fill: "#4b5563", fontSize: 14 }}
+                            />
+                        </YAxis>                        
+                        <Tooltip
+                            content={({ active, payload, label }) => {
+                                if (active && payload && payload.length) {
+                                    return (
+                                        <div className="bg-white border border-gray-300 rounded-lg p-2 shadow-md text-sm text-indigo-600">
+                                            <p className="font-semibold">{typeMap[label]}</p>
+                                            <p>Value: {payload[0].value}</p>
+                                        </div>
+                                    );
+                                }
+                                return null;
+                            }}
+                        />
                         <Line
                             type="monotone"
                             dataKey="value"

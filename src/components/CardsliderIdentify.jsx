@@ -6,57 +6,63 @@ const stylesData = [
     title: "DRIVER",
     desc: "Mengendalikan, ambisi, dan orientasi pada hasil",
     points: [
-      "Tegas dalam mengambil keputusan dan langsung, senang mengendalikan lingkungan kerja",
-      "Paling optimal bekerja di bawah pengawasan minimal",
-      "Mudah menerima tantangan",
-      "Nyaman dengan perubahan",
-      "Self-starter",
-      "Kompetitif",
-      "Berorientasikan hasil",
+      "Percaya diri",
+      "Selalu terburu-buru",
+      "Sangat blak-blakan",
+      "Mengendalikan rapat-rapat",
+      "Cenderung terkesan kasar",
+      "Cenderung tidak sabaran",
+      "Cenderung menginterupsi orang lain",
+      "Agresif",
+      "Dapat membuat orang lain merasa terintimidasi",
     ],
   },
   {
     title: "INFLUENCER",
     desc: "Pendekatan sosial, berharap hal positif, dan keterbukaan ekspresi",
     points: [
-      "Umumnya optimistis dan antusias",
-      "Promotor dan motivator yang baik",
-      "Menikmati kebebasan untuk bergerak",
-      "Ekstrover",
-      "Berorientasikan orang",
-      "Terampil mempengaruhi orang lain",
-      "Senang bergaul",
+      "Cenderung ekstrovert",
+      "Sangat bersahabat dan karismatis",
+      "Saat berbicara, menggunakan tangan dan ekspresi wajah",
+      "Sangat antusias",
+      "Senang mengorganisir pertemuan yang bersifat sosial (kumpul-kumpul)",
+      "Senang bekerja dengan orang lain",
+      "Berusaha melibatkan orang lain dalam tugas/proyek",
+      "Cenderung optimistis",
     ],
   },
   {
     title: "SYMPATHIZER",
-    desc: "Sabar, pengendalian diri, pemain tim (team-player)",
+    desc: "Sabar, pengendalian diri, team-player",
     points: [
-      "Pekerja tim yang dapat diandalkan dan konsisten",
-      "Membutuhkan lingkungan kerja stabil",
-      "Bersahabat dengan rekan kerja",
-      "Butuh waktu menyesuaikan diri dengan perubahan",
-      "Dapat diandalkan",
+      "Sangat santai dan tenang",
+      "Pendengar yang sangat baik",
+      "Mendorong orang lain untuk bicara mengenai diri mereka",
+      "Cenderung diam dan tidak terbuka",
+      "Lebih suka mengikuti daripada memimpin",
+      "Senang bekerja dalam kelompok kecil",
     ],
   },
   {
     title: "ANALYZER",
-    desc: "Berorientasikan presisi dan analisa/kualitas",
+    desc: "Berorientasikan akurasi dan analisa/kualitas",
     points: [
-      "Senang bekerja dengan detail",
-      "Pemikiran kritis",
-      "Hati-hati dengan konsep benar/salah",
-      "Menjaga standar tinggi",
-      "Cenderung teratur dan tertata",
+      "Ruang kantor rapi/tertata",
+      "Senang mengumpulkan data dan membuat perencanaan",
+      "Cenderung terjebak dalam detail",
+      "Bicara tenang, factual – menghindari kesalahan",
+      "Jarang bicara dalam rapat-rapat",
+      "Menggunakan fakta/data untuk mengatasi keberatan dan saat mengambil keputusan",
     ],
   },
 ];
 
-export default function CardSliderCharacteristic() {
+
+export default function CardsliderIdentify() {
   return (
     <div className="flex flex-col items-center min-h-screen p-1">
       <div className="relative w-full max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-indigo-700 mb-2">Understanding Our Own Styles</h1>
+        <h1 className="text-3xl font-bold text-indigo-700 mb-2">Identifying Styles in Others</h1>
         <div
           className="overflow-x-auto scroll-smooth py-6 [&::-webkit-scrollbar]:hidden relative"
           style={{
@@ -77,7 +83,6 @@ export default function CardSliderCharacteristic() {
                 <h2 className="text-xl font-bold text-indigo-700 mb-2">
                   {style.title}
                 </h2>
-                <p className="text-gray-600 mb-4">{style.desc}</p>
                 <ul className="list-disc pl-6 space-y-1 text-gray-700 text-sm">
                   {style.points.map((p, i) => (
                     <li key={i}>{p}</li>
